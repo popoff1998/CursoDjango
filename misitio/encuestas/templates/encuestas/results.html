@@ -1,0 +1,10 @@
+<script src="https://code.highcharts.com/highcharts.src.js"></script>
+<h1>{{ pregunta.texto_pregunta }}</h1>
+<ul>
+{% for opcion in pregunta.opcion_set.all %}
+    <li>
+        {{ opcion.texto_opcion }} -- {{ opcion.votos }} voto{{ opcion.votos|pluralize }}
+    </li>
+{% endfor %}
+</ul>
+<a href="{% url 'encuestas:detail' pregunta.id %}">¿Votar de nuevo?</a>
