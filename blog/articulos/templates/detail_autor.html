@@ -1,0 +1,9 @@
+{% extends 'blog.html' %}
+
+{% block contenido %}
+<br>
+    {{ autor.get_full_name }}
+<br>
+<a href="mailto:{{ autor.email }}">{{ autor.email }}</a>
+<br>
+{% endblock contenido %}

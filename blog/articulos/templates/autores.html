@@ -1,0 +1,10 @@
+{% extends 'blog.html' %}
+
+{% block contenido %}
+    <br>
+    {% for autor in autores %}
+        <a href="{% url 'autor' autor.username %}">{{ autor.get_full_name }}</a> tiene 
+        {{ autor.articulo_set.all|length }} artículos
+        <br>
+    {% endfor %}    
+{% endblock contenido %}

@@ -1,0 +1,16 @@
+{% extends 'blog.html' %}
+
+{% block contenido %}
+    {% for articulo in articulos %}
+        <div class="post-preview">
+            <a href="{% url 'detalle' articulo.slug %}"> 
+                <h2 class="post-title">
+                    {{ articulo.titulo }}
+                </h2>
+            </a>
+            <p class="post-meta">
+                Publicado por <a href="{% url 'autor' articulo.autor.username %}">{{ articulo.autor.get_full_name }}</a> el {{ articulo.creacion }}
+            </p>
+        </div>
+    {% endfor %}
+{% endblock contenido %}
