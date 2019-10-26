@@ -1,3 +1,20 @@
-<h1>
-{{ id }}
-</h1>
+{% extends 'blog.html' %}
+
+{% block contenido %}
+    <h1>{{ articulo.titulo }}</h1> <i>por {{ articulo.autor.get_full_name }}</i>
+    <br>
+    {{ articulo.cuerpo|safe }}
+    <h2>Comentarios</h2>
+    {% for comentario in articulo.comentario_set.all %}
+        <b>Enviado por: {{ comentario.autor }}</b>
+        <br>
+        {{ comentario.cuerpo }}
+        <br>
+    {% endfor %}
+    <hr>
+    <form action="{% url 'detalle' articulo.slug %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p}}
+        <input type="submit" value="Enviar">
+    </form>
+{% endblock contenido %}
